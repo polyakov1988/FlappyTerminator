@@ -4,26 +4,26 @@ using UnityEngine;
 
 namespace Bullet
 {
-    public class PlayerBulletGoalAchievement : MonoBehaviour
+    public class PlayerBulletKillEnemyListener : MonoBehaviour
     {
         [SerializeField] private PlayerBulletCollisionHandler _playerBulletCollisionHandler;
         [SerializeField] private Bullet _bullet;
     
-        private BulletPool _bulletPool;
+        private PlayerBulletPool _bulletPool;
 
         private void OnEnable()
         {
-            _playerBulletCollisionHandler.OnGoalAchieved += MoveIntoPool;
+            _playerBulletCollisionHandler.EnemyKilled += MoveIntoPool;
         }
 
         private void Awake()
         {
-            _bulletPool = GameObject.FindGameObjectWithTag("PlayerBulletPool").GetComponent<BulletPool>();
+            _bulletPool = FindObjectOfType<PlayerBulletPool>();
         }
     
         private void OnDisable()
         {
-            _playerBulletCollisionHandler.OnGoalAchieved -= MoveIntoPool;
+            _playerBulletCollisionHandler.EnemyKilled -= MoveIntoPool;
         }
 
         private void MoveIntoPool()

@@ -5,13 +5,13 @@ namespace CollisionHandler
 {
     public class EnemyCollisionHandler : MonoBehaviour
     {
-        public event Action OnEnemyDied;
+        public event Action EnemyDied;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("PlayerBullet") || other.CompareTag("Player"))
             {
-                OnEnemyDied?.Invoke();
+                EnemyDied?.Invoke();
             }
         }
     }

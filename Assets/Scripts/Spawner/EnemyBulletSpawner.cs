@@ -6,14 +6,14 @@ namespace Spawner
 {
     public class EnemyBulletSpawner : MonoBehaviour
     {
-        private BulletPool _bulletPool;
+        private EnemyBulletPool _bulletPool;
     
         private WaitForSeconds _bulletSpawnTime;
         private bool _isShootingActive;
 
         private void Awake()
         {
-            _bulletPool = GameObject.FindGameObjectWithTag("EnemyBulletPool").GetComponent<BulletPool>();
+            _bulletPool = FindObjectOfType<EnemyBulletPool>();
         
             _bulletSpawnTime = new(2);
         }

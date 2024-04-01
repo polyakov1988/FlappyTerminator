@@ -10,7 +10,7 @@ namespace UI
 
         private void OnEnable()
         {
-            _score.OnScoreChanged += RenderScore;
+            _score.ScoreChanged += RenderScore;
         }
 
         private void RenderScore(int score)
@@ -20,7 +20,7 @@ namespace UI
 
         private void OnDisable()
         {
-            _score.OnScoreChanged -= RenderScore;
+            _score.ScoreChanged -= RenderScore;
         }
     }
 }

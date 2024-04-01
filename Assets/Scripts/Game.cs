@@ -15,14 +15,14 @@ public class Game : MonoBehaviour
     {
         _startScreen.PlayButtonClicked += OnPlayButtonClick;
         _endScreen.RestartButtonClicked += OnRestartButtonClick;
-        _playerDeath.OnGameEnded += OnGameOver;
+        _playerDeath.GameEnded += GameOver;
     }
 
     private void OnDisable()
     {
         _startScreen.PlayButtonClicked -= OnPlayButtonClick;
         _endScreen.RestartButtonClicked -= OnRestartButtonClick;
-        _playerDeath.OnGameEnded -= OnGameOver;
+        _playerDeath.GameEnded -= GameOver;
     }
 
     private void Start()
@@ -31,7 +31,7 @@ public class Game : MonoBehaviour
         _startScreen.Open();
     }
 
-    private void OnGameOver()
+    private void GameOver()
     {
         _endScreen.Open();
     }

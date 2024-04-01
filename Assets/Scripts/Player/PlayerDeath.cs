@@ -11,27 +11,27 @@ namespace Player
 
         private ExplosionSpawner _explosionSpawner;
 
-        public event Action OnGameEnded;
+        public event Action GameEnded;
     
         private void OnEnable()
         {
-            _playerCollisionHandler.OnPlayerDied += Die;
+            _playerCollisionHandler.PlayerDied += Die;
         }
 
         private void Awake()
         {
-            _explosionSpawner = GameObject.FindGameObjectWithTag("ExplosionSpawner").GetComponent<ExplosionSpawner>();
+            _explosionSpawner = FindObjectOfType<ExplosionSpawner>();
         }
     
         private void OnDisable()
         {
-            _playerCollisionHandler.OnPlayerDied -= Die;
+            _playerCollisionHandler.PlayerDied -= Die;
         }
 
         private void Die()
         {
             _explosionSpawner.Explode(transform.position);
-            OnGameEnded?.Invoke();
+            GameEnded?.Invoke();
             gameObject.SetActive(false);
         }
 

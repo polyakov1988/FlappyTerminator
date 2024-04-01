@@ -7,7 +7,7 @@ namespace Score
     {
         private int _score;
     
-        public event Action<int> OnScoreChanged;
+        public event Action<int> ScoreChanged;
 
         private void Awake()
         {
@@ -17,13 +17,13 @@ namespace Score
         public void Increment()
         {
             _score++;
-            OnScoreChanged?.Invoke(_score);
+            ScoreChanged?.Invoke(_score);
         }
 
         public void Reset()
         {
             _score = 0;
-            OnScoreChanged?.Invoke(_score);
+            ScoreChanged?.Invoke(_score);
         }
     }
 }

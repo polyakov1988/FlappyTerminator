@@ -6,7 +6,7 @@ namespace Spawner
 {
     public class PlayerBulletSpawner : MonoBehaviour
     {
-        [SerializeField] private BulletPool _bulletPool;
+        [SerializeField] private PlayerBulletPool _bulletPool;
 
         private bool _canShoot;
         private WaitForSeconds _shootingTimeout;

@@ -16,14 +16,14 @@ namespace Enemy
 
         private void OnEnable()
         {
-            _enemyCollisionHandler.OnEnemyDied += Die;
+            _enemyCollisionHandler.EnemyDied += Die;
         }
 
         private void Awake()
         {
-            _enemyPool = GameObject.FindGameObjectWithTag("EnemyPool").GetComponent<EnemyPool>();
-            _explosionSpawner = GameObject.FindGameObjectWithTag("ExplosionSpawner").GetComponent<ExplosionSpawner>();
-            _score = GameObject.FindGameObjectWithTag("Score").GetComponent<Score.Score>();
+            _enemyPool = FindObjectOfType<EnemyPool>();
+            _explosionSpawner = FindObjectOfType<ExplosionSpawner>();
+            _score = FindObjectOfType<Score.Score>();
         }
 
         private void Die()
@@ -35,7 +35,7 @@ namespace Enemy
 
         private void OnDisable()
         {
-            _enemyCollisionHandler.OnEnemyDied -= Die;
+            _enemyCollisionHandler.EnemyDied -= Die;
         }
     }
 }

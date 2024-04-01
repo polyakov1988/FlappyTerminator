@@ -5,13 +5,13 @@ namespace CollisionHandler
 {
     public class PlayerBulletCollisionHandler : MonoBehaviour
     {
-        public event Action OnGoalAchieved;
+        public event Action EnemyKilled;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Enemy"))
             {
-                OnGoalAchieved?.Invoke();
+                EnemyKilled?.Invoke();
             }
         }
     }

@@ -1,4 +1,3 @@
-using System;
 using Pool;
 using UnityEngine;
 
@@ -11,7 +10,7 @@ namespace Remover
 
         private void Awake()
         {
-            _explosionPool = GameObject.FindGameObjectWithTag("ExplosionPool").GetComponent<ExplosionPool>();
+            _explosionPool = FindObjectOfType<ExplosionPool>();
             _explosion = gameObject.GetComponent<Explosion.Explosion>();
         }
 

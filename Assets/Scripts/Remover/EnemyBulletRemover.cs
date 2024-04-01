@@ -5,7 +5,7 @@ namespace Remover
 {
     public class EnemyBulletRemover : MonoBehaviour
     {
-        [SerializeField] private BulletPool _bulletPool;
+        [SerializeField] private EnemyBulletPool _bulletPool;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
