@@ -2,7 +2,7 @@ using Mover;
 using Spawner;
 using UnityEngine;
 
-namespace Enemy
+namespace EnemyEntity
 {
     public class Enemy : MonoBehaviour
     {

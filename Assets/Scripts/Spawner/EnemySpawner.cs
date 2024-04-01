@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
+using EnemyEntity;
 using Pool;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -14,8 +14,6 @@ namespace Spawner
     
         private WaitForSeconds _enemySpawnTime;
         private bool _isSpawnActive;
-
-        private List<Enemy.Enemy> _enemies = new();
 
         private void Awake()
         {
@@ -32,7 +30,7 @@ namespace Spawner
         {
             while (_isSpawnActive)
             {
-                Enemy.Enemy enemy = _enemyPool.GetObject();
+                Enemy enemy = _enemyPool.GetObject();
                 enemy.transform.SetParent(transform);
                 enemy.transform.position = new Vector3(transform.position.x, Random.Range(_minY, _maxY));
 
@@ -42,11 +40,11 @@ namespace Spawner
 
         public void Reset()
         {
-            Component[] enemies = transform.GetComponentsInChildren(typeof(Enemy.Enemy), false);
+            Component[] enemies = transform.GetComponentsInChildren(typeof(Enemy), false);
 
             foreach (var entity in enemies)
             {
-                Enemy.Enemy enemy = (Enemy.Enemy)entity;
+                Enemy enemy = (Enemy)entity;
 
                 enemy.Reset();
                 

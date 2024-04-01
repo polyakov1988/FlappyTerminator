@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Explosion
+namespace ExplosionEntity
 {
     public class Explosion : MonoBehaviour
     {

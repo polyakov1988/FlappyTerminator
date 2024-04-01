@@ -1,6 +1,8 @@
+using Bullet;
+
 namespace Pool
 {
-    public class PlayerBulletPool : BasePool<Bullet.Bullet>
+    public class PlayerBulletPool : BasePool<PlayerBullet>
     {
     }
 }

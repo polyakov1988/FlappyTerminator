@@ -3,7 +3,7 @@ using CollisionHandler;
 using Spawner;
 using UnityEngine;
 
-namespace Player
+namespace PlayerEntity
 {
     public class PlayerDeath : MonoBehaviour
     {
@@ -11,7 +11,7 @@ namespace Player
 
         private ExplosionSpawner _explosionSpawner;
 
-        public event Action GameEnded;
+        public event Action Died;
     
         private void OnEnable()
         {
@@ -31,7 +31,7 @@ namespace Player
         private void Die()
         {
             _explosionSpawner.Explode(transform.position);
-            GameEnded?.Invoke();
+            Died?.Invoke();
             gameObject.SetActive(false);
         }
 

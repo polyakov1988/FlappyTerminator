@@ -1,4 +1,4 @@
-using Mover;
+using EnemyEntity;
 using Pool;
 using UnityEngine;
 
@@ -10,9 +10,9 @@ namespace Remover
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Enemy"))
+            if (other.TryGetComponent(out Enemy enemy))
             {
-                _enemyPool.PutObject(other.GetComponent<Enemy.Enemy>());
+                _enemyPool.PutObject(enemy);
             }
         }
     }

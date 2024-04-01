@@ -1,3 +1,4 @@
+using Bullet;
 using Pool;
 using UnityEngine;
 
@@ -9,9 +10,9 @@ namespace Remover
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("EnemyBullet"))
+            if (other.TryGetComponent(out EnemyBullet enemyBullet))
             {
-                _bulletPool.PutObject(other.GetComponent<Bullet.Bullet>());
+                _bulletPool.PutObject(enemyBullet);
             }
         }
     }

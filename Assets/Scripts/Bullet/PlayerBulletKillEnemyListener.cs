@@ -7,7 +7,7 @@ namespace Bullet
     public class PlayerBulletKillEnemyListener : MonoBehaviour
     {
         [SerializeField] private PlayerBulletCollisionHandler _playerBulletCollisionHandler;
-        [SerializeField] private Bullet _bullet;
+        [SerializeField] private PlayerBullet _bullet;
     
         private PlayerBulletPool _bulletPool;
 

@@ -1,3 +1,4 @@
+using Score;
 using TMPro;
 using UnityEngine;
 
@@ -6,21 +7,21 @@ namespace UI
     public class ScoreView : MonoBehaviour
     {
         [SerializeField] private TMP_Text _textMeshPro;
-        [SerializeField] private Score.Score _score;
+        [SerializeField] private ScoreCounter _scoreCounter;
 
         private void OnEnable()
         {
-            _score.ScoreChanged += RenderScore;
+            _scoreCounter.ScoreChanged += RenderScoreCounter;
         }
 
-        private void RenderScore(int score)
+        private void RenderScoreCounter(int score)
         {
             _textMeshPro.text = score.ToString();
         }
 
         private void OnDisable()
         {
-            _score.ScoreChanged -= RenderScore;
+            _scoreCounter.ScoreChanged -= RenderScoreCounter;
         }
     }
 }

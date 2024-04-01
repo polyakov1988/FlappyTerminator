@@ -1,11 +1,11 @@
-using Player;
+using PlayerEntity;
 using Screen;
 using Spawner;
 using UnityEngine;
 
 public class Game : MonoBehaviour
 {
-    [SerializeField] private Player.Player _player;
+    [SerializeField] private Player _player;
     [SerializeField] private PlayerDeath _playerDeath;
     [SerializeField] private EnemySpawner _enemySpawner;
     [SerializeField] private StartScreen _startScreen;
@@ -15,14 +15,14 @@ public class Game : MonoBehaviour
     {
         _startScreen.PlayButtonClicked += OnPlayButtonClick;
         _endScreen.RestartButtonClicked += OnRestartButtonClick;
-        _playerDeath.GameEnded += GameOver;
+        _playerDeath.Died += GameOver;
     }
 
     private void OnDisable()
     {
         _startScreen.PlayButtonClicked -= OnPlayButtonClick;
         _endScreen.RestartButtonClicked -= OnRestartButtonClick;
-        _playerDeath.GameEnded -= GameOver;
+        _playerDeath.Died -= GameOver;
     }
 
     private void Start()

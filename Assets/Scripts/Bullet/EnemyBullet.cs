@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Bullet
 {
-    public class Bullet : MonoBehaviour
+    public class EnemyBullet : MonoBehaviour
     {
     }
 }

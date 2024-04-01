@@ -1,9 +1,10 @@
 using CollisionHandler;
 using Pool;
+using Score;
 using Spawner;
 using UnityEngine;
 
-namespace Enemy
+namespace EnemyEntity
 {
     public class EnemyDeath : MonoBehaviour
     {
@@ -12,7 +13,7 @@ namespace Enemy
 
         private ExplosionSpawner _explosionSpawner;
         private EnemyPool _enemyPool;
-        private Score.Score _score;
+        private ScoreCounter _scoreCounter;
 
         private void OnEnable()
         {
@@ -23,14 +24,14 @@ namespace Enemy
         {
             _enemyPool = FindObjectOfType<EnemyPool>();
             _explosionSpawner = FindObjectOfType<ExplosionSpawner>();
-            _score = FindObjectOfType<Score.Score>();
+            _scoreCounter = FindObjectOfType<ScoreCounter>();
         }
 
         private void Die()
         {
             _enemyPool.PutObject(_enemy);
             _explosionSpawner.Explode(transform.position);
-            _score.Increment();
+            _scoreCounter.Increment();
         }
 
         private void OnDisable()

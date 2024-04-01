@@ -1,4 +1,5 @@
 using System.Collections;
+using Bullet;
 using Pool;
 using UnityEngine;
 
@@ -35,7 +36,7 @@ namespace Spawner
             {
                 yield return _bulletSpawnTime;
                 
-                Bullet.Bullet bullet = _bulletPool.GetObject();
+                EnemyBullet bullet = _bulletPool.GetObject();
 
                 bullet.transform.SetParent(transform);
                 bullet.transform.position = transform.position;
@@ -44,11 +45,11 @@ namespace Spawner
 
         public void Reset()
         {
-            Component[] bullets = transform.GetComponentsInChildren(typeof(Bullet.Bullet), false);
+            Component[] bullets = transform.GetComponentsInChildren(typeof(EnemyBullet), false);
 
             foreach (var bullet in bullets)
             {
-                _bulletPool.PutObject((Bullet.Bullet) bullet);
+                _bulletPool.PutObject((EnemyBullet) bullet);
             }
         }
     }

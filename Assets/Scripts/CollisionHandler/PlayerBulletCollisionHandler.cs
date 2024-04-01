@@ -1,4 +1,5 @@
 using System;
+using EnemyEntity;
 using UnityEngine;
 
 namespace CollisionHandler
@@ -9,7 +10,7 @@ namespace CollisionHandler
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Enemy"))
+            if (other.TryGetComponent(out Enemy enemy))
             {
                 EnemyKilled?.Invoke();
             }

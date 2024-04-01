@@ -9,16 +9,18 @@ namespace Mover
 
         private Rigidbody2D _rigidbody;
         private Vector3 _startPosition;
+        private KeyCode _jumpKey;
     
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
             _startPosition = transform.position;
+            _jumpKey = KeyCode.Mouse0;
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(_jumpKey))
             {
                 _rigidbody.velocity = Vector2.zero;
                 _rigidbody.velocity += Vector2.up * _velocity;

@@ -1,4 +1,5 @@
 using System.Collections;
+using Bullet;
 using Pool;
 using UnityEngine;
 
@@ -10,16 +11,18 @@ namespace Spawner
 
         private bool _canShoot;
         private WaitForSeconds _shootingTimeout;
+        private KeyCode _shootKey;
 
         private void Awake()
         {
             _shootingTimeout = new(1);
             _canShoot = true;
+            _shootKey = KeyCode.Mouse1;
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Mouse1) && _canShoot)
+            if (Input.GetKeyDown(_shootKey) && _canShoot)
             {
                 StartCoroutine(Shoot());
             }
@@ -29,7 +32,7 @@ namespace Spawner
         {
             _canShoot = false;
         
-            Bullet.Bullet bullet = _bulletPool.GetObject();
+            PlayerBullet bullet = _bulletPool.GetObject();
             bullet.transform.position = transform.position;
             
             yield return _shootingTimeout;
@@ -39,11 +42,11 @@ namespace Spawner
 
         public void Reset()
         {
-            GameObject[] bullets = GameObject.FindGameObjectsWithTag("PlayerBullet");
+            PlayerBullet[] bullets = FindObjectsOfType<PlayerBullet>();
 
             foreach (var bullet in bullets)
             {
-                _bulletPool.PutObject(bullet.GetComponent<Bullet.Bullet>());
+                _bulletPool.PutObject(bullet);
             }
         }
     }

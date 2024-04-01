@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Score
 {
-    public class Score : MonoBehaviour
+    public class ScoreCounter : MonoBehaviour
     {
         private int _score;
     

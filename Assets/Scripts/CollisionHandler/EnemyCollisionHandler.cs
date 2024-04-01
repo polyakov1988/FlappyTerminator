@@ -1,4 +1,6 @@
 using System;
+using Bullet;
+using PlayerEntity;
 using UnityEngine;
 
 namespace CollisionHandler
@@ -9,7 +11,7 @@ namespace CollisionHandler
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("PlayerBullet") || other.CompareTag("Player"))
+            if (other.TryGetComponent(out PlayerBullet playerBullet) || other.TryGetComponent(out Player player))
             {
                 EnemyDied?.Invoke();
             }

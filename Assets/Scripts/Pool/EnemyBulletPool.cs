@@ -1,6 +1,8 @@
+using Bullet;
+
 namespace Pool
 {
-    public class EnemyBulletPool : BasePool<Bullet.Bullet>
+    public class EnemyBulletPool : BasePool<EnemyBullet>
     {
     }
 }
