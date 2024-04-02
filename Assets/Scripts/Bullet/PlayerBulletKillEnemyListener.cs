@@ -15,16 +15,16 @@ namespace Bullet
         {
             _playerBulletCollisionHandler.EnemyKilled += MoveIntoPool;
         }
-
-        private void Awake()
-        {
-            _bulletPool = FindObjectOfType<PlayerBulletPool>();
-        }
-    
+        
         private void OnDisable()
         {
             _playerBulletCollisionHandler.EnemyKilled -= MoveIntoPool;
         }
+
+        public void Init(PlayerBulletPool bulletPool)
+        {
+            _bulletPool = bulletPool;
+        } 
 
         private void MoveIntoPool()
         {

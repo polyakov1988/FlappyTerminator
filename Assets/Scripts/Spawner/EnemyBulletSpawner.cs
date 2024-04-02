@@ -14,9 +14,12 @@ namespace Spawner
 
         private void Awake()
         {
-            _bulletPool = FindObjectOfType<EnemyBulletPool>();
-        
             _bulletSpawnTime = new(2);
+        }
+
+        public void Init(EnemyBulletPool bulletPool)
+        {
+            _bulletPool = bulletPool;
         }
 
         public void StartShoot()

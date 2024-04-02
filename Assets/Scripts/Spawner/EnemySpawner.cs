@@ -1,6 +1,7 @@
 using System.Collections;
 using EnemyEntity;
 using Pool;
+using Score;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,8 +10,11 @@ namespace Spawner
     public class EnemySpawner : MonoBehaviour
     {
         [SerializeField] private EnemyPool _enemyPool;
+        [SerializeField] private EnemyBulletPool _enemyBulletPool;
         [SerializeField] private float _minY;
         [SerializeField] private float _maxY;
+        [SerializeField] private ExplosionSpawner _explosionSpawner;
+        [SerializeField] private ScoreCounter _scoreCounter;
     
         private WaitForSeconds _enemySpawnTime;
         private bool _isSpawnActive;
@@ -31,6 +35,7 @@ namespace Spawner
             while (_isSpawnActive)
             {
                 Enemy enemy = _enemyPool.GetObject();
+                enemy.Init(_enemyPool, _explosionSpawner, _scoreCounter, _enemyBulletPool);
                 enemy.transform.SetParent(transform);
                 enemy.transform.position = new Vector3(transform.position.x, Random.Range(_minY, _maxY));
 

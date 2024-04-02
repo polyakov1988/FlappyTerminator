@@ -1,5 +1,6 @@
 using ExplosionEntity;
 using Pool;
+using Remover;
 using UnityEngine;
 
 namespace Spawner
@@ -11,7 +12,8 @@ namespace Spawner
         public void Explode(Vector3 position)
         {
             Explosion explosion = _explosionPool.GetObject();
-
+            explosion.Init(_explosionPool);
+            
             explosion.transform.position = position;
         }
     }

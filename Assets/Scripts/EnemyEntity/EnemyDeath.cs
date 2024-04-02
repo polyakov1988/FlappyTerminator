@@ -17,14 +17,19 @@ namespace EnemyEntity
 
         private void OnEnable()
         {
-            _enemyCollisionHandler.EnemyDied += Die;
+            _enemyCollisionHandler.Died += Die;
+        }
+        
+        private void OnDisable()
+        {
+            _enemyCollisionHandler.Died -= Die;
         }
 
-        private void Awake()
+        public void Init(EnemyPool enemyPool, ExplosionSpawner explosionSpawner, ScoreCounter scoreCounter)
         {
-            _enemyPool = FindObjectOfType<EnemyPool>();
-            _explosionSpawner = FindObjectOfType<ExplosionSpawner>();
-            _scoreCounter = FindObjectOfType<ScoreCounter>();
+            _enemyPool = enemyPool;
+            _explosionSpawner = explosionSpawner;
+            _scoreCounter = scoreCounter;
         }
 
         private void Die()
@@ -32,11 +37,6 @@ namespace EnemyEntity
             _enemyPool.PutObject(_enemy);
             _explosionSpawner.Explode(transform.position);
             _scoreCounter.Increment();
-        }
-
-        private void OnDisable()
-        {
-            _enemyCollisionHandler.EnemyDied -= Die;
         }
     }
 }

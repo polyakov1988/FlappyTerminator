@@ -11,8 +11,12 @@ namespace Remover
 
         private void Awake()
         {
-            _explosionPool = FindObjectOfType<ExplosionPool>();
             _explosion = gameObject.GetComponent<Explosion>();
+        }
+
+        public void Init(ExplosionPool explosionPool)
+        {
+            _explosionPool = explosionPool;
         }
 
         //Used by Animation Event on the last frame

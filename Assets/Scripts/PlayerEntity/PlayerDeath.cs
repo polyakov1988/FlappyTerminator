@@ -8,26 +8,20 @@ namespace PlayerEntity
     public class PlayerDeath : MonoBehaviour
     {
         [SerializeField] private PlayerCollisionHandler _playerCollisionHandler;
-
-        private ExplosionSpawner _explosionSpawner;
+        [SerializeField] private ExplosionSpawner _explosionSpawner;
 
         public event Action Died;
     
         private void OnEnable()
         {
-            _playerCollisionHandler.PlayerDied += Die;
+            _playerCollisionHandler.Died += Die;
         }
-
-        private void Awake()
-        {
-            _explosionSpawner = FindObjectOfType<ExplosionSpawner>();
-        }
-    
+        
         private void OnDisable()
         {
-            _playerCollisionHandler.PlayerDied -= Die;
+            _playerCollisionHandler.Died -= Die;
         }
-
+        
         private void Die()
         {
             _explosionSpawner.Explode(transform.position);

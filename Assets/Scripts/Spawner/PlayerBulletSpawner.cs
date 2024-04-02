@@ -33,6 +33,7 @@ namespace Spawner
             _canShoot = false;
         
             PlayerBullet bullet = _bulletPool.GetObject();
+            bullet.Init(_bulletPool);
             bullet.transform.position = transform.position;
             
             yield return _shootingTimeout;

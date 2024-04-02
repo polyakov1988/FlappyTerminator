@@ -8,7 +8,7 @@ namespace CollisionHandler
 {
     public class PlayerCollisionHandler : MonoBehaviour
     {
-        public event Action PlayerDied;
+        public event Action Died;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -16,7 +16,7 @@ namespace CollisionHandler
                 || other.TryGetComponent(out Enemy enemy) 
                 || other.TryGetComponent(out Edge edge))
             {
-                PlayerDied?.Invoke();
+                Died?.Invoke();
             }
         }
     }
